@@ -1,0 +1,1 @@
+Hello friends! In this test there is a simulted stock market. I would like you to add a pop-up when the price of the stock has fallen 10% in the last day. If you are feeling frustrated, look at the function names and class names one by one. Good luck!

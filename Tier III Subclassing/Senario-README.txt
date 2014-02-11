@@ -1,0 +1,1 @@
+In this test there is a car class. This car has a rpm and an accelerate method. The car will break if it is accelerated without shifting up. That logic, however, is irrelevent to you. I need you to create a subclass "Convertable" which can either have its top up and down, and cannot raise or lower the top at speeds higher than 30 mph. 
