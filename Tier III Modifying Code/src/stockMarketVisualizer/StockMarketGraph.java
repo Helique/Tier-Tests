@@ -4,12 +4,15 @@ import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
-import java.awt.Stroke;
-
 import javax.swing.JPanel;
 
 public class StockMarketGraph extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5239174224008171383L;
+	
 	private Double[] Graph =null;
 	public void paintGraph(Double[] Graph){
 		this.Graph = Graph;
