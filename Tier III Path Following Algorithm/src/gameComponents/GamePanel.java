@@ -14,18 +14,30 @@ import characters.Monster;
 
 public class GamePanel extends JPanel {
 
+	//Hertz measures the amount of cycles in one second, 60 fps == 60hz
 	final double Logic_Hertz = 30;
+	
+	//Target_Time is measured in milliseconds. Time for one cycle == (1second/#OFHERTZ);
 	final double Target_Time_Between_Logic = 1000000000/Logic_Hertz;
 	final double Render_Hertz = 60;
 	final double Target_Time_Between_Renders = 1000000000/Render_Hertz;
+	
+	//these times are recorded when a logic/render update happens
+	//when the difference between this value and the current time is > Target_Time_Between_XXX
+	//then a render or logic update is executed
 	double lastLogicTime = System.nanoTime();
 	double lastRenderTime = System.nanoTime();
+	
+	//set to false to exit the gameLoop
 	boolean running = true;
+	
+	//this value is a # between 0 and 1
+	//this value is based on the time percentage between logic updates at the time of a render
 	double interpolation=0;
-	boolean upKeyPressed = false;
-	boolean downKeyPressed = false;
-	boolean leftKeyPressed = false;
-	boolean rightKeyPressed = false;
+	
+	
+	//Path points for level1, order determines the order that the monster moves
+	//only state corners, and only give commands at 90 degree angles
 	double[][] Level1 = {
 							{0,250},
 							{100,250},
@@ -41,13 +53,16 @@ public class GamePanel extends JPanel {
 							{0,200}
 	};
 	
+	//A list of monsters, used to easily keep track of all the little critters...
 	ArrayList<Monster> monsterList = new ArrayList<Monster>();
 	
 	public void enterGameLoop(){
 		monsterList.add(new Monster(Level1,5));
+		
+		//Loop runs forever
 		while(running){
 			lastLogicTime =System.nanoTime();
-			logic();
+			updateLogic();
 			System.out.println("Logic executed!");
 			while((System.nanoTime() -lastLogicTime)< Target_Time_Between_Logic){
 				System.out.println("Render executed!");
@@ -67,21 +82,32 @@ public class GamePanel extends JPanel {
 			}
 		}
 	}
+	
+	//Render, Called from game loop
 	private void render(){
 		this.repaint();
 	}
-	private void logic(){
+	//Called from Gameloop
+	private void updateLogic(){
 		for(Monster m: monsterList){
 			m.updateLogic();
 		}
 	}
+	//called from repaint, which is called in render
 	public void paint(Graphics g){
+		//clear the screen, comment this code out and run the application
+		//to see what happens
 		super.paint(g);
+		
+		
 		Graphics2D g2d = (Graphics2D)g;
 		
+		//go through the list of monsters and render each one
 		for(Monster m: monsterList){
 			m.render(g2d,interpolation);
 		}
+		
+		//render the path
 		drawPath(Level1, g2d);
 	}
 	
@@ -121,8 +147,12 @@ public class GamePanel extends JPanel {
 		
 		//Draw the corners
 		for (int i = 1; i<pathPoints.length-1;i++){
+			//direction the monsters will come from
 			String firstDirection = "Right";
+			//direction the monsters will go to
 			String secondDirection = "Left";
+			
+			//figure out which direction the monsters will come from
 			if(pathPoints[i][0] > pathPoints[i-1][0]){
 				firstDirection = MovingRIGHT;
 			} else if(pathPoints[i][0] < pathPoints[i-1][0]){
@@ -132,6 +162,8 @@ public class GamePanel extends JPanel {
 			} else if(pathPoints[i][1] > pathPoints[i-1][1]){
 				firstDirection = MovingDOWN;
 			}
+			
+			//figure out which direction the monsters will go to
 			if(pathPoints[i+1][0] > pathPoints[i][0]){
 				secondDirection = MovingRIGHT;
 			} else if(pathPoints[i+1][0] < pathPoints[i][0]){

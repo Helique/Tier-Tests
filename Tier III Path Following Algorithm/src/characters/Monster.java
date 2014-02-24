@@ -20,32 +20,45 @@ public class Monster {
 	final static String MovingRIGHT ="RIGTH";
 	final static String MovingLEFT ="LEFT";
 	
+	//create a monster, it requires the entire path he is going to follow and the speed
+	//he can move at9=
 	public Monster(double[][] setPathPoints, double setSpeed){
 		Speed = setSpeed;
 		pathPoints = setPathPoints;
+		//set current location the the beginning of the path
 		x= pathPoints[currentPointDestination][0];
 		y= pathPoints[currentPointDestination][1];
 		lastx =x;
 		lasty =y;
+		//increment the current destination
 		currentPointDestination++;
+		//calculate the movement direction to get to the next point on the path.
 		this.calculateDirectionToNextPoint();
 	}
 	
-	
+	//render the character 
 	public void render(Graphics2D g2d, double interpolation) {
+		//the characters render location is based on its last position
+		//plus the difference between the current location and the last location multiplied by the percent of 
+		//the time between logic updates
 		double renderX = lastx + (x-lastx)*interpolation;
 		double renderY = lasty + (y-lasty)*interpolation;
 		g2d.drawOval((int)renderX-5, (int)renderY-5, 10, 10);
-		
 	}
+	
 	public void updateLogic() {
 		lastx =x;
 		lasty =y;
+		
+		//move in a direction based on the direction your supposed to move! 
 		if(movementDirection == MovingRIGHT){
 			velocityX = Speed;
 			velocityY = 0;
 			x +=velocityX;
 			y +=velocityY;
+			//if you have moved, and then passed your destination, move back to your destination
+			//increment the location number
+			//recalculate movementDirection with the new location number
 			if(pathPoints[currentPointDestination][0] < x){
 				x = pathPoints[currentPointDestination][0];
 				currentPointDestination++;
@@ -86,6 +99,8 @@ public class Monster {
 		
 		
 	}
+	
+	//calculates the movement direction required to get to the next destinationPoint
 	private void calculateDirectionToNextPoint(){
 		if(pathPoints[currentPointDestination][0] > x){
 			movementDirection = MovingRIGHT;
