@@ -102,6 +102,7 @@ public class GamePanel extends JPanel {
 		
 		Graphics2D g2d = (Graphics2D)g;
 		
+		
 		//go through the list of monsters and render each one
 		for(Monster m: monsterList){
 			m.render(g2d,interpolation);

@@ -1,0 +1,30 @@
+RUN THE PROGRAM!
+
+Look at the MainExecutable.
+1. What are the names of the two variables declared in the main function?
+2. What do you think they each do?
+
+Look at the Logic_Hertz and Render_Hertz under the GamePanel class.
+1. Change the Logic_Hertz number up and down, what happened?
+2. Change the Render_Hertz number up and down, what happened?
+3. Can the Render_Hertz be lower than Logic_Hertz?
+Return the values to 30 and 60 after your done.
+
+Look at the Monstor class, specifically the constructor 
+*public Monster(double[][] setPathPoints, double setSpeed)*
+1. notice the setSpeed
+
+Look at the GamePanel class, specifically the line that adds a monster 
+*monsterList.add(new Monster(Level1,5));* ~ line #60
+1. change the number 5 to something else, what happended?
+2. Can you set it to a decimal number? why?
+
+Go to the Monster.java class and find this line in the constructor.
+*Speed = setSpeed;*
+1. replace it with the line *Speed = Math.abs(setSpeed);*
+2. what problem did we just solve?
+
+Final Problem:
+1. Create a new level.
+2. Prompt the user with a pop-up and ask them which 
+level they would like to use

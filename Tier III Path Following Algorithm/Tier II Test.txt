@@ -1,0 +1,48 @@
+Section A----
+Finish all unfinished parts of the game
+1. corners are not drawn
+2. straight corridors are not drawn
+3. the game ends ungracefully with an exception
+4. add a new monster every 15 logic updates.
+5. add a background drawn in paint for each level, cause
+	the black lines are boring!
+
+Section B----
+
+
+
+1. Add a tower class that aims at the monster closest to it.
+You will need an ArrayList<tower> just like the monsters
+
+2. add a basic projectile class and keep track of the projectiles
+with an ArrayList<projectile>
+
+3. have the towers shoot a projectile once every .5 seconds.
+4. have the towers shoot a projectile once every 15 logic frames.
+5. what are the pros and cons of each choice?
+
+6. create a hitbox variable for the monsters
+7. position the hitbox and draw it green for debugging purposes
+8. create a hitbox variable for the projectile class
+9. add a for loop that checks in the monsters logicUpdate function
+	that checks if it has hit any of the projectiles
+10. Have the monster remove itself from the ArrayList<monster>
+	on the GamePanel. (ask david for help regaurding variable accesability)
+
+11. keep score
+
+12. declare a winner or loser
+
+13. increase the ammount of monsters being generated progressively
+
+14. create "Waves"
+
+15. let the user place a new tower every 2 seconds.
+
+16. don't let them place the towers on top of eachother. 
+
+17. let them only place it on a grid.
+
+18. create a random level generator.w/o the Paint background
+
+
