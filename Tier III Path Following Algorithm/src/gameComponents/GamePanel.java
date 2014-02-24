@@ -33,7 +33,7 @@ public class GamePanel extends JPanel {
 	
 	//this value is a # between 0 and 1
 	//this value is based on the time percentage between logic updates at the time of a render
-	double interpolation=0;
+	private double interpolation=0;
 	
 	
 	//Path points for level1, order determines the order that the monster moves

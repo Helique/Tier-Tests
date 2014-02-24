@@ -24,6 +24,12 @@ Go to the Monster.java class and find this line in the constructor.
 1. replace it with the line *Speed = Math.abs(setSpeed);*
 2. what problem did we just solve?
 
+Go to the GamePanel class, specifically drawPath
+1. change the variable PathWidth, what do you think will happen?
+2. run the code, what problems could changing the path width cause?
+
+Make all variables private and add getters and setters.
+
 Final Problem:
 1. Create a new level.
 2. Prompt the user with a pop-up and ask them which 

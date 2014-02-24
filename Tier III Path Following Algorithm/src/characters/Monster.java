@@ -5,13 +5,13 @@ import java.awt.Graphics2D;
 public class Monster {
 	double x =0;
 	double y= 0;
-	double lastx =0;
-	double lasty =0;
+	private double lastx =0;
+	private double lasty =0;
 	double width =0;
 	double height =0;
-	double velocityX =0;
-	double velocityY =0;
-	double Speed;
+	private double velocityX =0;
+	private double velocityY =0;
+	private double Speed;
 	double[][] pathPoints;
 	int currentPointDestination =0;
 	String movementDirection ="right";
